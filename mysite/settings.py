@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'blog'
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -56,8 +56,8 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],    # BASE_DIR表示该项目的根目录
+        'APP_DIRS': False,                                # APP_DIRS为False表示不再允许Django按照默认方式寻找模板文件
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -121,7 +121,8 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 
 # 设置时区，东八区设置为"Asia/Shanghai"
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -133,6 +134,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/'    # 需要在应用下面建立static文件夹然后通过以下方式http://localhost:8000/blog/static/favicon.ico
 
-TEMPLATE_DIRS = (os.path.join(BASE_DIR,  'templates'),)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"))

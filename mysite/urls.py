@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.views.generic import RedirectView
+from blog import views
 
 urlpatterns = [
+    url(r'^/favicon.ico$', RedirectView.as_view(url=r'/static/image/favicon.ico')),
+    url(r'^$', views.blog_title),
     url(r'^admin/', admin.site.urls),
     url(r'^blog/', include(("blog.urls", "blog"), namespace="blog")),
 ]
