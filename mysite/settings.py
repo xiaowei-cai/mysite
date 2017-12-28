@@ -25,7 +25,7 @@ SECRET_KEY = 'u*av*_&7^k98wb$idtoy$+k5yyql#+3#s=#vk7%wz9-7#*dvx+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*', ]
 
 
 # Application definition
@@ -136,4 +136,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'    # 需要在应用下面建立static文件夹然后通过以下方式http://localhost:8000/blog/static/favicon.ico
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"))
+# 不加逗号报错信息：django.core.exceptions.ImproperlyConfigured: Your STATICFILES_DIRS setting is not a tuple or list;
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
